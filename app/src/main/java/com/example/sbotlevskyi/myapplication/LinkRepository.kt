@@ -1,13 +1,12 @@
 package com.example.sbotlevskyi.myapplication
 
-import android.os.AsyncTask.execute
 import android.arch.lifecycle.LiveData
 import android.app.Application
 
 
 class LinkRepository {
     private var mWordDao: DeepLinkDao
-    private var mAllWords: LiveData<List<DeepLinkModel>>
+    private var mAllWords: LiveData<List<LinkModel>>
 
     constructor(application: Application) {
         val db = DeepLinkRoomDatabase.getInstance(application)
@@ -15,12 +14,12 @@ class LinkRepository {
         mAllWords = mWordDao.getAllLinks()
     }
 
-    fun getAllWords(): LiveData<List<DeepLinkModel>> {
+    fun getAllWords(): LiveData<List<LinkModel>> {
         return mAllWords
     }
 
 
-    fun insert(word: DeepLinkModel) {
+    fun insert(word: LinkModel) {
         Thread(Runnable {
             mWordDao.insertUrl(word)
         }).start()

@@ -7,18 +7,18 @@ import android.arch.persistence.room.*
 interface DeepLinkDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertUrl(url: DeepLinkModel)
+    fun insertUrl(url: LinkModel)
 
     @Delete
-    fun deleteUrl(url: DeepLinkModel)
+    fun deleteUrl(url: LinkModel)
 
     @Update
-    fun updateUrl(url: DeepLinkModel)
+    fun updateUrl(url: LinkModel)
 
     @Query("DELETE FROM deep_link_table")
     fun deleteAll()
 
     @Query("SELECT * from deep_link_table ORDER BY name ASC")
-    fun getAllLinks(): LiveData<List<DeepLinkModel>>
+    fun getAllLinks(): LiveData<List<LinkModel>>
 }
 

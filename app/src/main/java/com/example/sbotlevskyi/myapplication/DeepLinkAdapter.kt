@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import com.example.sbotlevskyi.myapplication.DeepLinkAdapter.LinkViewHolder
 import kotlinx.android.synthetic.main.link_item.view.*
 
-class DeepLinkAdapter(var callback: (String) -> Unit) : RecyclerView.Adapter<LinkViewHolder>() {
+class DeepLinkAdapter(var callback: (LinkModel) -> Unit) : RecyclerView.Adapter<LinkViewHolder>() {
 
-    var listLink = mutableListOf<DeepLinkModel>()
+    var listLink = mutableListOf<LinkModel>()
 
-    fun updateData(list: List<DeepLinkModel>) {
+    fun updateData(list: List<LinkModel>) {
         listLink = list.toMutableList()
     }
 
@@ -29,11 +29,11 @@ class DeepLinkAdapter(var callback: (String) -> Unit) : RecyclerView.Adapter<Lin
     }
 
     class LinkViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun onBind(item: DeepLinkModel, callback: (String) -> Unit) {
+        fun onBind(item: LinkModel, callback: (LinkModel) -> Unit) {
             itemView.titleText.text = item.nameLink
             itemView.linkText.text = item.urlDeepLink
             itemView.setOnClickListener {
-                callback.invoke(item.urlDeepLink)
+                callback.invoke(LinkModel(item.urlDeepLink, item.nameLink))
             }
         }
     }
