@@ -7,6 +7,7 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+
     <EditText
         android:id="@+id/text_uri"
         android:layout_width="wrap_content"
@@ -14,7 +15,6 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-
         android:text="crma://whatson/details/restaurant/72e142c9-aee1-47e8-ac7e-2c194b02aa46"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -30,6 +30,14 @@
         android:layout_marginEnd="16dp"
         android:onClick="onClickOpen"
         android:text="Send" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/linksRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="16dp">
+
+    </android.support.v7.widget.RecyclerView>
 
     <!--<TextView-->
     <!--android:layout_width="wrap_content"-->

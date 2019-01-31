@@ -19,6 +19,6 @@ interface DeepLinkDao {
     fun deleteAll()
 
     @Query("SELECT * from deep_link_table ORDER BY name ASC")
-    fun getAllLinks(): LiveData<DeepLinkModel>
+    fun getAllLinks(): LiveData<List<DeepLinkModel>>
 }
 

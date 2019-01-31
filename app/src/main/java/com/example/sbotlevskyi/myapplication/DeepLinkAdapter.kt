@@ -1,24 +1,40 @@
 package com.example.sbotlevskyi.myapplication
 
 import android.support.v7.widget.RecyclerView
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.sbotlevskyi.myapplication.DeepLinkAdapter.WordViewHolder
+import com.example.sbotlevskyi.myapplication.DeepLinkAdapter.LinkViewHolder
+import kotlinx.android.synthetic.main.link_item.view.*
 
-class DeepLinkAdapter: RecyclerView.Adapter<WordViewHolder>(){
-    override fun onCreateViewHolder(p0: ViewGroup, p1: Int): WordViewHolder {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+class DeepLinkAdapter(var callback: (String) -> Unit) : RecyclerView.Adapter<LinkViewHolder>() {
+
+    var listLink = mutableListOf<DeepLinkModel>()
+
+    fun updateData(list: List<DeepLinkModel>) {
+        listLink = list.toMutableList()
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, p1: Int): LinkViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.link_item, parent, false)
+        return LinkViewHolder(view)
     }
 
     override fun getItemCount(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return listLink.size
     }
 
-    override fun onBindViewHolder(p0: WordViewHolder, p1: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun onBindViewHolder(holder: LinkViewHolder, position: Int) {
+        holder.onBind(listLink[position], callback)
     }
 
-    class WordViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
+    class LinkViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        fun onBind(item: DeepLinkModel, callback: (String) -> Unit) {
+            itemView.titleText.text = item.nameLink
+            itemView.linkText.text = item.urlDeepLink
+            itemView.setOnClickListener {
+                callback.invoke(item.urlDeepLink)
+            }
+        }
     }
 }
