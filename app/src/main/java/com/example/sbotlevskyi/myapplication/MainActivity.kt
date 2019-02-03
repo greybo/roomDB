@@ -75,8 +75,9 @@ class MainActivity : AppCompatActivity() {
         return listOf(
                 LinkModel("crma://whatson/details/restaurant/72e142c9-aee1-47e8-ac7e-2c194b02aa46", "buffet"),
                 LinkModel("crma://whatson/details/livetheatreschedule/428f86d3-467d-46b0-921d-1bc0f41fde98", "livetheatreschedule"),
-                LinkModel("crma://whatson/details/detail/e7a4ca1c-f038-4984-a57e-0b7e575e", "bad"),
-                LinkModel("crma://search/category/1cbcb8d3-3027-4add-a713-b013e9352cd4", "restaurant"),
+                LinkModel("crma://whatson/details/detail/e7a4ca1c-f038-4984-a57e-0b7e575e", "detail bad"),
+                LinkModel("crma://search/category/1cbcb8d3-3027-4add-a713-b013e9352cd4", "search restaurant"),
+                LinkModel("crma://search/category/1cbcb8d3-3027-4add-a713", "search bad"),
                 LinkModel("crma://rewards/privilege/MELBRIVERSIDE", "privilege"),
                 LinkModel("crma://rewards/reward/PARKING", "reward"),
                 LinkModel("crma://rewards/member/dd993c37-5f27-4528-a125-4ddf5f8f4b37", "member"),
